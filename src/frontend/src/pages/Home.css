@@ -1,0 +1,149 @@
+.home-pagina {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+
+.home-hero {
+  background: linear-gradient(135deg, var(--oranje) 0%, var(--oranje-donker) 100%);
+  color: var(--wit);
+  text-align: center;
+  padding: 48px 24px 40px;
+}
+
+.home-hero-emoji {
+  font-size: 3.5rem;
+  margin-bottom: 12px;
+}
+
+.home-titel {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 8px;
+  letter-spacing: -0.5px;
+}
+
+.home-ondertitel {
+  font-size: 1rem;
+  opacity: 0.9;
+  max-width: 320px;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+
+.home-acties {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.actie-kaart {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: var(--wit);
+  border-radius: var(--radius);
+  padding: 16px 20px;
+  text-decoration: none;
+  color: var(--tekst);
+  box-shadow: var(--schaduw);
+  transition: transform 0.15s, box-shadow 0.15s;
+  border-left: 4px solid transparent;
+}
+
+.actie-kaart:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--schaduw-hover);
+}
+
+.actie-ontdekken { border-left-color: #9b59b6; }
+.actie-weekmenu  { border-left-color: #3498db; }
+.actie-boodschappen { border-left-color: var(--groen); }
+.actie-voorkeuren { border-left-color: var(--oranje); }
+
+.actie-emoji {
+  font-size: 1.75rem;
+  flex-shrink: 0;
+}
+
+.actie-kaart div {
+  flex: 1;
+}
+
+.actie-kaart h3 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+
+.actie-kaart p {
+  font-size: 0.8rem;
+  color: var(--grijs);
+}
+
+.actie-pijl {
+  font-size: 1.2rem;
+  color: var(--grijs);
+}
+
+.home-stats {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-bottom: 20px;
+  padding: 20px;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.stat-waarde {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--oranje);
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  color: var(--grijs);
+  text-align: center;
+}
+
+.stat-divider {
+  width: 1px;
+  height: 40px;
+  background: var(--rand);
+}
+
+.home-info {
+  margin-bottom: 8px;
+}
+
+.home-info h2 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.stappen {
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.stappen li {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--tekst);
+}
+
+.stappen li strong {
+  color: var(--oranje);
+}

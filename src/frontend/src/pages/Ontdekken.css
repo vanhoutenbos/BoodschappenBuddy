@@ -1,0 +1,313 @@
+.ontdekken-pagina {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100dvh;
+  padding-bottom: calc(var(--nav-hoogte) + 16px);
+}
+
+/* Voortgang */
+.voortgang-balk {
+  height: 6px;
+  background: var(--rand);
+  border-radius: 999px;
+  overflow: hidden;
+  margin-bottom: 6px;
+}
+
+.voortgang-vulling {
+  height: 100%;
+  background: var(--oranje);
+  border-radius: 999px;
+  transition: width 0.3s ease;
+}
+
+.voortgang-tekst {
+  text-align: right;
+  font-size: 0.8rem;
+  color: var(--grijs);
+  margin-bottom: 0;
+}
+
+/* Kaart-container */
+.kaart-container {
+  position: relative;
+  width: min(380px, 90vw);
+  height: 480px;
+  margin: 16px auto;
+  flex-shrink: 0;
+}
+
+.swipe-kaart {
+  position: absolute;
+  inset: 0;
+  background: var(--wit);
+  border-radius: var(--radius-groot);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.14);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  user-select: none;
+  touch-action: none;
+}
+
+.swipe-kaart-voor {
+  z-index: 2;
+  will-change: transform;
+}
+
+.swipe-kaart-achter {
+  z-index: 1;
+  transform: scale(0.95) translateY(12px);
+  background: #f5f5f5;
+  pointer-events: none;
+}
+
+/* Overlays */
+.swipe-overlay {
+  position: absolute;
+  top: 24px;
+  font-size: 1.2rem;
+  font-weight: 800;
+  padding: 8px 20px;
+  border-radius: 999px;
+  z-index: 10;
+  pointer-events: none;
+  animation: overlayFade 0.1s ease;
+}
+
+@keyframes overlayFade {
+  from { opacity: 0; scale: 0.8; }
+  to   { opacity: 1; scale: 1; }
+}
+
+.overlay-like {
+  right: 24px;
+  background: rgba(40, 167, 69, 0.9);
+  color: white;
+  transform: rotate(10deg);
+}
+
+.overlay-dislike {
+  left: 24px;
+  background: rgba(220, 53, 69, 0.9);
+  color: white;
+  transform: rotate(-10deg);
+}
+
+/* Recept inhoud */
+.recept-emoji-groot {
+  font-size: 5rem;
+  padding: 32px 0 16px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.recept-info {
+  flex: 1;
+  width: 100%;
+  padding: 0 20px 16px;
+  overflow-y: auto;
+}
+
+.recept-naam {
+  font-size: 1.3rem;
+  font-weight: 800;
+  margin-bottom: 6px;
+  text-align: center;
+}
+
+.recept-beschrijving {
+  font-size: 0.875rem;
+  color: var(--grijs);
+  text-align: center;
+  margin-bottom: 12px;
+  line-height: 1.4;
+}
+
+.recept-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: center;
+  margin-bottom: 8px;
+}
+
+.recept-dieet {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: center;
+  margin-bottom: 8px;
+}
+
+.info-knop {
+  display: block;
+  margin: 8px auto 0;
+  background: none;
+  border: none;
+  color: var(--oranje);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 4px 8px;
+}
+
+.ingredienten-lijst {
+  list-style: none;
+  margin-top: 10px;
+  border-top: 1px solid var(--rand);
+  padding-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.ingredienten-lijst li {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+}
+
+.ing-naam {
+  color: var(--tekst);
+}
+
+.ing-hoeveelheid {
+  color: var(--grijs);
+}
+
+/* Actieknoppen */
+.swipe-knoppen {
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+  margin-bottom: 8px;
+}
+
+.swipe-knop {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: none;
+  font-size: 1.75rem;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.swipe-knop:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.swipe-knop-dislike {
+  background: #fff5f5;
+  box-shadow: 0 4px 16px rgba(220, 53, 69, 0.2);
+}
+
+.swipe-knop-dislike:hover:not(:disabled) {
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(220, 53, 69, 0.3);
+}
+
+.swipe-knop-like {
+  background: #f5fff8;
+  box-shadow: 0 4px 16px rgba(40, 167, 69, 0.2);
+}
+
+.swipe-knop-like:hover:not(:disabled) {
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(40, 167, 69, 0.3);
+}
+
+.swipe-hint {
+  font-size: 0.78rem;
+  color: var(--grijs);
+}
+
+/* Klaar-staat */
+.klaar-staat {
+  text-align: center;
+  padding: 32px 0;
+}
+
+.klaar-emoji {
+  font-size: 4rem;
+  margin-bottom: 16px;
+}
+
+.klaar-staat h2 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.klaar-staat p {
+  color: var(--grijs);
+  margin-bottom: 24px;
+  font-size: 0.95rem;
+}
+
+.klaar-knoppen {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 32px;
+}
+
+.gelikte-lijst {
+  text-align: left;
+  background: var(--wit);
+  border-radius: var(--radius);
+  padding: 16px;
+  box-shadow: var(--schaduw);
+}
+
+.gelikte-lijst h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.gelikt-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--rand);
+  font-size: 0.9rem;
+}
+
+.gelikt-item:last-child {
+  border-bottom: none;
+}
+
+.gelikt-emoji {
+  font-size: 1.25rem;
+}
+
+.gelikt-item span:nth-child(2) {
+  flex: 1;
+}
+
+.gelikt-verwijder {
+  background: none;
+  border: none;
+  color: var(--grijs);
+  cursor: pointer;
+  font-size: 1.25rem;
+  line-height: 1;
+  padding: 4px;
+  border-radius: 50%;
+  transition: color 0.15s, background 0.15s;
+}
+
+.gelikt-verwijder:hover {
+  color: var(--rood);
+  background: #fff5f5;
+}

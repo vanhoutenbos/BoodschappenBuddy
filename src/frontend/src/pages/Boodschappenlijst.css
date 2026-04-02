@@ -1,0 +1,160 @@
+.afvinken-voortgang {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+  color: var(--grijs);
+  margin-bottom: 12px;
+}
+
+.reset-knop {
+  background: none;
+  border: none;
+  color: var(--oranje);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 2px 8px;
+}
+
+/* Tabbladen */
+.tabbladen {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 12px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+
+.tabblad {
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1.5px solid var(--rand);
+  background: var(--wit);
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.15s;
+  color: var(--grijs);
+}
+
+.tabblad.actief {
+  background: var(--oranje);
+  border-color: var(--oranje);
+  color: var(--wit);
+}
+
+/* Supermarkt header */
+.sm-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  padding: 12px 16px;
+  background: var(--wit);
+  border-radius: var(--radius);
+  box-shadow: var(--schaduw);
+}
+
+.sm-naam {
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.sm-totaal {
+  font-size: 0.85rem;
+  color: var(--grijs);
+}
+
+/* Boodschappenlijst */
+.boodschappen-lijst {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.boodschap-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--wit);
+  border-radius: var(--radius);
+  padding: 12px 14px;
+  box-shadow: var(--schaduw);
+  cursor: pointer;
+  transition: opacity 0.2s;
+  user-select: none;
+}
+
+.boodschap-item.afgevinkt {
+  opacity: 0.45;
+}
+
+.boodschap-item.afgevinkt .boodschap-naam {
+  text-decoration: line-through;
+}
+
+.check-cirkel {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 2px solid var(--oranje);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--oranje);
+  background: var(--wit);
+  transition: background 0.15s;
+}
+
+.boodschap-item.afgevinkt .check-cirkel {
+  background: var(--oranje);
+  color: var(--wit);
+}
+
+.boodschap-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.boodschap-naam {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.boodschap-hoeveelheid {
+  font-size: 0.78rem;
+  color: var(--grijs);
+}
+
+.boodschap-prijs-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 3px;
+  flex-shrink: 0;
+}
+
+.boodschap-supermarkt {
+  font-size: 0.68rem;
+  color: var(--grijs);
+}
+
+.boodschap-prijs {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--tekst);
+}
+
+.boodschap-item.afgevinkt .boodschap-prijs {
+  text-decoration: line-through;
+  color: var(--grijs);
+}

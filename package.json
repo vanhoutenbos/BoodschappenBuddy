@@ -1,0 +1,12 @@
+{
+  "name": "boodschappenbuddy",
+  "version": "0.1.0",
+  "description": "BoodschappenBuddy – slimme Nederlandse boodschappen app",
+  "private": true,
+  "scripts": {
+    "dev:frontend": "npm --prefix src/frontend run dev",
+    "dev:backend": "npm --prefix src/backend run dev",
+    "build:frontend": "npm --prefix src/frontend run build",
+    "install:all": "npm --prefix src/frontend install && npm --prefix src/backend install"
+  }
+}
