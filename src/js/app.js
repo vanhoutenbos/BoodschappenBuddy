@@ -19,6 +19,20 @@ let touchStartY = 0;
 let touchCurrentX = 0;
 let isDragging = false;
 
+/**
+ * Fisher-Yates shuffle: geeft een willekeurig geschudde kopie van het array terug.
+ * @param {Array} array
+ * @returns {Array}
+ */
+function shuffle(array) {
+  const arr = [...array];
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+
 // ============================================================
 // NAVIGATIE
 // ============================================================
@@ -360,16 +374,6 @@ function genereeerWeekMenu() {
     return;
   }
 
-  // Fisher-Yates shuffle voor betere willekeurigheid
-  function shuffle(array) {
-    const arr = [...array];
-    for (let i = arr.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [arr[i], arr[j]] = [arr[j], arr[i]];
-    }
-    return arr;
-  }
-
   // Bouw een pool van 7 recepten op en herhaal het shufflen totdat
   // er geen opeenvolgende dezelfde recepten meer zijn (max 50 pogingen).
   let pool;
@@ -494,9 +498,11 @@ function genereerBoodschappenlijstVanMenu(menu) {
     });
   });
 
-  const lijst = Array.from(ingredientenMap.values()).sort((a, b) =>
-    a.categorie.localeCompare(b.categorie) || a.naam.localeCompare(b.naam)
-  );
+  const lijst = Array.from(ingredientenMap.values()).sort((a, b) => {
+    const catVergelijking = a.categorie.localeCompare(b.categorie);
+    if (catVergelijking !== 0) return catVergelijking;
+    return a.naam.localeCompare(b.naam);
+  });
 
   slaBoodschappenlijstOp(lijst);
 }
