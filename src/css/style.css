@@ -1,0 +1,972 @@
+/* ============================================================
+   BoodschappenBuddy - Stijlen
+   Mobiel-first, volledig lokaal — geen externe CSS
+   ============================================================ */
+
+/* Variabelen */
+:root {
+  --kleur-primair: #FF6B35;
+  --kleur-primair-donker: #E55A27;
+  --kleur-primair-licht: #FFF0EA;
+  --kleur-secundair: #4A9B7F;
+  --kleur-achtergrond: #F5F5F0;
+  --kleur-wit: #FFFFFF;
+  --kleur-tekst: #2D3748;
+  --kleur-tekst-licht: #718096;
+  --kleur-rand: #E2E8F0;
+  --kleur-gevaar: #E53E3E;
+  --kleur-gevaar-licht: #FFF5F5;
+  --kleur-succes: #38A169;
+  --kleur-succes-licht: #F0FFF4;
+  --kleur-info: #3182CE;
+  --kleur-info-licht: #EBF8FF;
+  --kleur-waarschuwing: #D69E2E;
+  --kleur-waarschuwing-licht: #FFFFF0;
+  --schaduw-klein: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.08);
+  --schaduw-medium: 0 4px 6px rgba(0,0,0,0.1), 0 2px 4px rgba(0,0,0,0.06);
+  --schaduw-groot: 0 10px 30px rgba(0,0,0,0.15);
+  --radius-klein: 8px;
+  --radius-medium: 16px;
+  --radius-groot: 24px;
+  --nav-hoogte: 64px;
+  --header-hoogte: 56px;
+}
+
+/* Reset & Basis */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  background-color: var(--kleur-achtergrond);
+  color: var(--kleur-tekst);
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  overflow: hidden;
+}
+
+/* ============================================================
+   ONBOARDING
+   ============================================================ */
+
+#onboarding {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(135deg, var(--kleur-primair) 0%, #FF8C42 50%, #FFB347 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 24px 20px;
+  overflow-y: auto;
+  z-index: 100;
+}
+
+.onboarding-logo {
+  font-size: 64px;
+  margin-top: 20px;
+  animation: bounceIn 0.6s ease;
+}
+
+.onboarding-titel {
+  font-size: 28px;
+  font-weight: 800;
+  color: white;
+  text-align: center;
+  margin-top: 12px;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.15);
+}
+
+.onboarding-subtitel {
+  font-size: 15px;
+  color: rgba(255,255,255,0.9);
+  text-align: center;
+  margin-top: 6px;
+  margin-bottom: 32px;
+}
+
+.onboarding-kaart {
+  background: white;
+  border-radius: var(--radius-groot);
+  padding: 28px 24px;
+  width: 100%;
+  max-width: 480px;
+  box-shadow: var(--schaduw-groot);
+}
+
+.onboarding-kaart h2 {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--kleur-tekst);
+  margin-bottom: 20px;
+}
+
+.onboarding-lokaal-badge {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--kleur-succes-licht);
+  border: 1px solid #C6F6D5;
+  border-radius: var(--radius-klein);
+  padding: 12px 16px;
+  margin-bottom: 24px;
+  font-size: 14px;
+  color: var(--kleur-succes);
+}
+
+.onboarding-lokaal-badge strong {
+  display: block;
+  font-size: 15px;
+}
+
+/* ============================================================
+   APP LAYOUT
+   ============================================================ */
+
+#app {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  background: var(--kleur-achtergrond);
+}
+
+/* Header */
+.app-header {
+  height: var(--header-hoogte);
+  background: white;
+  border-bottom: 1px solid var(--kleur-rand);
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  flex-shrink: 0;
+  box-shadow: var(--schaduw-klein);
+}
+
+.app-logo {
+  font-size: 24px;
+  margin-right: 8px;
+}
+
+.app-titel {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--kleur-primair);
+}
+
+/* Inhoud gebied */
+.app-inhoud {
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Pagina's */
+.pagina {
+  position: absolute;
+  inset: 0;
+  overflow-y: auto;
+  display: none;
+  flex-direction: column;
+  padding: 16px;
+  padding-bottom: calc(var(--nav-hoogte) + 16px);
+}
+
+.pagina.actief {
+  display: flex;
+}
+
+/* Bottom navigatie */
+.bottom-nav {
+  height: var(--nav-hoogte);
+  background: white;
+  border-top: 1px solid var(--kleur-rand);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-shrink: 0;
+  box-shadow: 0 -2px 10px rgba(0,0,0,0.06);
+  position: relative;
+  z-index: 10;
+}
+
+.nav-knop {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  flex: 1;
+  height: 100%;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: var(--kleur-tekst-licht);
+  font-size: 12px;
+  font-family: inherit;
+  transition: color 0.2s;
+  position: relative;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.nav-knop:active {
+  background: var(--kleur-primair-licht);
+}
+
+.nav-knop.actief {
+  color: var(--kleur-primair);
+}
+
+.nav-icon {
+  font-size: 22px;
+  line-height: 1;
+}
+
+.nav-badge {
+  position: absolute;
+  top: 6px;
+  right: calc(50% - 18px);
+  background: var(--kleur-primair);
+  color: white;
+  font-size: 10px;
+  font-weight: 700;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  display: none;
+}
+
+/* ============================================================
+   FORMULIER ELEMENTEN
+   ============================================================ */
+
+.form-label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 16px;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--kleur-tekst);
+}
+
+.form-input {
+  padding: 12px 14px;
+  border: 1.5px solid var(--kleur-rand);
+  border-radius: var(--radius-klein);
+  font-size: 16px;
+  font-family: inherit;
+  background: white;
+  color: var(--kleur-tekst);
+  transition: border-color 0.2s;
+  width: 100%;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--kleur-primair);
+  box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.15);
+}
+
+.form-select {
+  padding: 12px 14px;
+  border: 1.5px solid var(--kleur-rand);
+  border-radius: var(--radius-klein);
+  font-size: 16px;
+  font-family: inherit;
+  background: white;
+  color: var(--kleur-tekst);
+  cursor: pointer;
+  width: 100%;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23718096' d='M6 8L0 0h12z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 40px;
+}
+
+.checkbox-groep {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 15px;
+  cursor: pointer;
+  padding: 10px 14px;
+  border: 1.5px solid var(--kleur-rand);
+  border-radius: var(--radius-klein);
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.checkbox-label:has(input:checked) {
+  border-color: var(--kleur-primair);
+  background: var(--kleur-primair-licht);
+}
+
+.checkbox-label input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--kleur-primair);
+  cursor: pointer;
+}
+
+/* ============================================================
+   KNOPPEN
+   ============================================================ */
+
+.knop {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 20px;
+  border: none;
+  border-radius: var(--radius-medium);
+  font-size: 15px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: transform 0.1s, box-shadow 0.2s, background 0.2s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.knop:active {
+  transform: scale(0.97);
+}
+
+.knop-primair {
+  background: var(--kleur-primair);
+  color: white;
+  box-shadow: 0 4px 12px rgba(255, 107, 53, 0.35);
+}
+
+.knop-primair:hover {
+  background: var(--kleur-primair-donker);
+}
+
+.knop-secundair {
+  background: white;
+  color: var(--kleur-tekst);
+  border: 1.5px solid var(--kleur-rand);
+}
+
+.knop-secundair:hover {
+  background: var(--kleur-achtergrond);
+}
+
+.knop-gevaar {
+  background: var(--kleur-gevaar-licht);
+  color: var(--kleur-gevaar);
+  border: 1.5px solid #FEB2B2;
+}
+
+.knop-klein {
+  padding: 8px 14px;
+  font-size: 13px;
+}
+
+.knop-vol {
+  width: 100%;
+  margin-top: 8px;
+}
+
+/* ============================================================
+   SWIPE PAGINA
+   ============================================================ */
+
+.pagina-swipe {
+  padding-top: 8px;
+}
+
+#swipe-kaart-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 12px;
+  user-select: none;
+}
+
+.swipe-teller {
+  font-size: 13px;
+  color: var(--kleur-tekst-licht);
+  margin-bottom: 12px;
+  font-weight: 500;
+}
+
+.swipe-kaart {
+  background: white;
+  border-radius: var(--radius-groot);
+  box-shadow: var(--schaduw-groot);
+  width: 100%;
+  max-width: 380px;
+  overflow: hidden;
+  cursor: grab;
+  touch-action: pan-y;
+  position: relative;
+  transition: box-shadow 0.2s;
+}
+
+.swipe-kaart:active {
+  cursor: grabbing;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+}
+
+.swipe-kaart-emoji {
+  font-size: 80px;
+  text-align: center;
+  background: linear-gradient(135deg, var(--kleur-primair-licht), #FFF8F0);
+  padding: 32px 20px;
+  line-height: 1;
+}
+
+.swipe-kaart-inhoud {
+  padding: 20px;
+}
+
+.swipe-kaart-naam {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--kleur-tekst);
+  margin-bottom: 8px;
+}
+
+.swipe-kaart-beschrijving {
+  font-size: 14px;
+  color: var(--kleur-tekst-licht);
+  margin-bottom: 12px;
+  line-height: 1.5;
+}
+
+.swipe-kaart-meta {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+
+.swipe-kaart-meta span {
+  font-size: 13px;
+  color: var(--kleur-tekst-licht);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.swipe-kaart-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.tag {
+  background: var(--kleur-primair-licht);
+  color: var(--kleur-primair-donker);
+  font-size: 12px;
+  font-weight: 500;
+  padding: 3px 10px;
+  border-radius: 100px;
+}
+
+/* Swipe feedback overlays */
+.swipe-feedback-nee,
+.swipe-feedback-ja {
+  position: absolute;
+  top: 20px;
+  font-size: 48px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.1s;
+}
+
+.swipe-feedback-nee {
+  left: 20px;
+  transform: rotate(-20deg);
+}
+
+.swipe-feedback-ja {
+  right: 20px;
+  transform: rotate(20deg);
+}
+
+/* Swipe knoppen */
+.swipe-knoppen {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+  padding-bottom: 8px;
+  width: 100%;
+  max-width: 380px;
+}
+
+.swipe-knop {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.2s;
+  box-shadow: var(--schaduw-medium);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.swipe-knop:active {
+  transform: scale(0.92);
+}
+
+.swipe-knop-nee {
+  background: var(--kleur-gevaar-licht);
+  color: var(--kleur-gevaar);
+}
+
+.swipe-knop-skip {
+  width: 48px;
+  height: 48px;
+  align-self: center;
+  background: white;
+  color: var(--kleur-tekst-licht);
+  font-size: 18px;
+}
+
+.swipe-knop-ja {
+  background: var(--kleur-succes-licht);
+  color: var(--kleur-succes);
+}
+
+/* Swipe animaties */
+.swipe-uit-rechts {
+  animation: swipeRechts 0.3s ease forwards;
+}
+
+.swipe-uit-links {
+  animation: swipeLinks 0.3s ease forwards;
+}
+
+@keyframes swipeRechts {
+  to {
+    transform: translateX(150%) rotate(20deg);
+    opacity: 0;
+  }
+}
+
+@keyframes swipeLinks {
+  to {
+    transform: translateX(-150%) rotate(-20deg);
+    opacity: 0;
+  }
+}
+
+/* Swipe leeg scherm */
+.swipe-leeg {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 32px 20px;
+  gap: 14px;
+}
+
+.swipe-leeg-emoji {
+  font-size: 64px;
+}
+
+.swipe-leeg h2 {
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.swipe-leeg p {
+  color: var(--kleur-tekst-licht);
+  font-size: 15px;
+}
+
+.hint {
+  font-size: 13px !important;
+  color: var(--kleur-tekst-licht) !important;
+  font-style: italic;
+}
+
+/* ============================================================
+   WEEK MENU PAGINA
+   ============================================================ */
+
+.menu-acties {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.menu-acties .knop {
+  flex: 1;
+  min-width: 140px;
+}
+
+.menu-lijst {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.menu-dag-kaart {
+  background: white;
+  border-radius: var(--radius-medium);
+  padding: 14px 16px;
+  box-shadow: var(--schaduw-klein);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.menu-dag-label {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--kleur-primair);
+  width: 72px;
+  flex-shrink: 0;
+}
+
+.menu-dag-recept {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+  min-width: 0;
+}
+
+.menu-dag-emoji {
+  font-size: 28px;
+  flex-shrink: 0;
+}
+
+.menu-dag-info {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.menu-dag-info strong {
+  font-size: 15px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.menu-dag-info small {
+  color: var(--kleur-tekst-licht);
+  font-size: 12px;
+  margin-top: 2px;
+}
+
+/* ============================================================
+   BOODSCHAPPENLIJST PAGINA
+   ============================================================ */
+
+.lijst-voortgang {
+  background: white;
+  border-radius: var(--radius-medium);
+  padding: 16px;
+  margin-bottom: 12px;
+  box-shadow: var(--schaduw-klein);
+}
+
+.voortgang-balk {
+  height: 8px;
+  background: var(--kleur-rand);
+  border-radius: 100px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.voortgang-gevuld {
+  height: 100%;
+  background: linear-gradient(90deg, var(--kleur-succes), #68D391);
+  border-radius: 100px;
+  transition: width 0.3s ease;
+}
+
+.voortgang-tekst {
+  font-size: 13px;
+  color: var(--kleur-tekst-licht);
+  font-weight: 500;
+}
+
+.lijst-acties {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.lijst-inhoud {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.lijst-categorie {
+  background: white;
+  border-radius: var(--radius-medium);
+  overflow: hidden;
+  box-shadow: var(--schaduw-klein);
+}
+
+.lijst-categorie-titel {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--kleur-tekst-licht);
+  padding: 12px 16px 8px;
+  border-bottom: 1px solid var(--kleur-rand);
+  background: var(--kleur-achtergrond);
+}
+
+.lijst-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 13px 16px;
+  cursor: pointer;
+  border-bottom: 1px solid var(--kleur-rand);
+  transition: background 0.15s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.lijst-item:last-child {
+  border-bottom: none;
+}
+
+.lijst-item:active {
+  background: var(--kleur-achtergrond);
+}
+
+.lijst-item input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  accent-color: var(--kleur-succes);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.lijst-item-naam {
+  flex: 1;
+  font-size: 15px;
+  transition: color 0.2s, text-decoration 0.2s;
+}
+
+.lijst-item-hoeveelheid {
+  font-size: 13px;
+  color: var(--kleur-tekst-licht);
+  white-space: nowrap;
+}
+
+.lijst-item.afgevinkt .lijst-item-naam {
+  text-decoration: line-through;
+  color: var(--kleur-tekst-licht);
+}
+
+/* ============================================================
+   INSTELLINGEN PAGINA
+   ============================================================ */
+
+.instellingen-sectie {
+  background: white;
+  border-radius: var(--radius-medium);
+  padding: 20px;
+  margin-bottom: 16px;
+  box-shadow: var(--schaduw-klein);
+}
+
+.instellingen-sectie h3 {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 14px;
+  color: var(--kleur-tekst);
+}
+
+.instellingen-statistieken {
+  background: var(--kleur-info-licht);
+  border: 1px solid #BEE3F8;
+}
+
+.instellingen-statistieken p {
+  font-size: 14px;
+  margin-bottom: 6px;
+  color: var(--kleur-info);
+}
+
+.instellingen-gevaar {
+  background: var(--kleur-gevaar-licht);
+  border: 1px solid #FEB2B2;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.instellingen-gevaar h3 {
+  color: var(--kleur-gevaar);
+}
+
+/* ============================================================
+   LEEG STAAT
+   ============================================================ */
+
+.leeg-staat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 40px 20px;
+  gap: 14px;
+  flex: 1;
+  justify-content: center;
+}
+
+.leeg-staat-emoji {
+  font-size: 64px;
+}
+
+.leeg-staat h2 {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--kleur-tekst);
+}
+
+.leeg-staat p {
+  color: var(--kleur-tekst-licht);
+  font-size: 15px;
+  max-width: 280px;
+}
+
+/* ============================================================
+   MELDINGEN (TOAST)
+   ============================================================ */
+
+.melding {
+  position: fixed;
+  bottom: calc(var(--nav-hoogte) + 16px);
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: var(--kleur-tekst);
+  color: white;
+  padding: 12px 20px;
+  border-radius: var(--radius-medium);
+  font-size: 14px;
+  font-weight: 500;
+  max-width: calc(100vw - 40px);
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.3s, transform 0.3s;
+  z-index: 1000;
+  box-shadow: var(--schaduw-groot);
+}
+
+.melding-zichtbaar {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+.melding-succes {
+  background: var(--kleur-succes);
+}
+
+.melding-info {
+  background: var(--kleur-info);
+}
+
+.melding-waarschuwing {
+  background: var(--kleur-waarschuwing);
+}
+
+.melding-fout {
+  background: var(--kleur-gevaar);
+}
+
+/* ============================================================
+   ANIMATIES
+   ============================================================ */
+
+@keyframes bounceIn {
+  0% { transform: scale(0.3); opacity: 0; }
+  50% { transform: scale(1.1); }
+  70% { transform: scale(0.9); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ============================================================
+   SCROLLBAR STYLING
+   ============================================================ */
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--kleur-rand);
+  border-radius: 2px;
+}
+
+/* ============================================================
+   TABLET / DESKTOP
+   ============================================================ */
+
+@media (min-width: 600px) {
+  .swipe-kaart {
+    max-width: 440px;
+  }
+
+  .swipe-knoppen {
+    max-width: 440px;
+  }
+
+  .menu-dag-kaart {
+    padding: 18px 20px;
+  }
+
+  .onboarding-kaart {
+    padding: 36px 32px;
+  }
+}
+
+@media (min-width: 768px) {
+  .app-inhoud {
+    max-width: 600px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  #app {
+    background: var(--kleur-rand);
+  }
+
+  .app-inhoud {
+    background: var(--kleur-achtergrond);
+  }
+}
