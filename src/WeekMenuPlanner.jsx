@@ -51,6 +51,11 @@ export default function WeekMenuPlanner() {
 
     try {
       const apiKey = import.meta.env.VITE_ANTHROPIC_API_KEY;
+      if (!apiKey) {
+        setError("API-sleutel ontbreekt. Stel VITE_ANTHROPIC_API_KEY in en herlaad de pagina.");
+        setScreen("days");
+        return;
+      }
       const anthropicHeaders = {
         "Content-Type": "application/json",
         "x-api-key": apiKey,
@@ -63,7 +68,7 @@ export default function WeekMenuPlanner() {
 
       const bonusRes = await fetch("https://api.anthropic.com/v1/messages", {
         method: "POST",
-        headers: anthropicHeaders,
+        headers: { ...anthropicHeaders, "anthropic-beta": "web_search_20250305" },
         body: JSON.stringify({
           model: "claude-sonnet-4-20250514",
           max_tokens: 1000,
@@ -75,8 +80,13 @@ export default function WeekMenuPlanner() {
         })
       });
 
+      if (!bonusRes.ok) {
+        const errData = await bonusRes.json().catch(() => ({}));
+        throw new Error(errData.error?.message || `HTTP ${bonusRes.status}`);
+      }
+
       const bonusData = await bonusRes.json();
-      const bonusText = bonusData.content.map((b) => b.text || "").join("");
+      const bonusText = (bonusData.content ?? []).map((b) => b.text || "").join("");
       let bonus = [];
       try {
         const m = bonusText.match(/\[[\s\S]*?\]/);
@@ -121,8 +131,13 @@ Antwoord ALLEEN als JSON zonder markdown of uitleg:
         })
       });
 
+      if (!menuRes.ok) {
+        const errData = await menuRes.json().catch(() => ({}));
+        throw new Error(errData.error?.message || `HTTP ${menuRes.status}`);
+      }
+
       const menuData = await menuRes.json();
-      const menuText = menuData.content.map((b) => b.text || "").join("");
+      const menuText = (menuData.content ?? []).map((b) => b.text || "").join("");
       let meals = [];
       try {
         const clean = menuText.replace(/```[\w]*\n?/g, "").trim();
