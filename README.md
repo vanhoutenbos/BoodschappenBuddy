@@ -97,6 +97,8 @@ _>> Zet hier later een link naar een enquete (bijv. Google Forms of Typeform)._
 - Community recepten
 - AI-integratie (betaalde versie)
 
+Een gedetailleerd overzicht van alle feature ideeën is te vinden in [docs/feature-ideas.md](docs/feature-ideas.md).
+
 ## Repository-structuur
 
 ```
