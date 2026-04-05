@@ -97,11 +97,11 @@
   margin-top: 2px;
 }
 
-/* Error */
-.wmp-error {
-  color: #c0392b;
-  background: #fdf0ee;
-  border: 1px solid #f5c6c0;
+/* Info / coming soon */
+.wmp-info {
+  color: #5a4a00;
+  background: #fffbea;
+  border: 1px solid #ffe58a;
   border-radius: 8px;
   padding: 10px 14px;
   font-size: 14px;
