@@ -57,6 +57,8 @@ _>> Zet hier later een link naar een enquête (bijvoorbeeld Google Forms of Type
 - Sociale features
 - Community recepten
 
+Een gedetailleerd overzicht van alle feature ideeën is te vinden in [docs/feature-ideas.md](docs/feature-ideas.md).
+
 ## Repository-structuur (voorstel)
 
 ```plaintext
