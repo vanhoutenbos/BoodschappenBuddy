@@ -1,0 +1,27 @@
+{
+  "name": "BoodschappenBuddy",
+  "short_name": "BoodBuddy",
+  "description": "Jouw slimme boodschappenplanner — volledig lokaal en privé.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#F5F5F0",
+  "theme_color": "#FF6B35",
+  "lang": "nl",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "./icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "./icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["food", "lifestyle", "utilities"],
+  "screenshots": []
+}

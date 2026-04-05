@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="description" content="BoodschappenBuddy — jouw slimme boodschappenplanner. Volledig lokaal, geen account nodig.">
+  <meta name="theme-color" content="#FF6B35">
+
+  <!-- PWA -->
+  <link rel="manifest" href="./manifest.json">
+  <link rel="apple-touch-icon" href="./icons/icon-192.png">
+
+  <title>BoodschappenBuddy</title>
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+
+  <!-- =====================================================
+       ONBOARDING SCHERM (eerste keer opstarten)
+       ===================================================== -->
+  <div id="onboarding" style="display: none;">
+    <div class="onboarding-logo">🛒</div>
+    <h1 class="onboarding-titel">BoodschappenBuddy</h1>
+    <p class="onboarding-subtitel">Jouw slimme boodschappenplanner</p>
+
+    <div class="onboarding-kaart">
+      <div class="onboarding-lokaal-badge">
+        <span style="font-size: 20px;">🔒</span>
+        <div>
+          <strong>100% Lokaal &amp; Privé</strong>
+          Alle data blijft op jouw apparaat. Geen account, geen cloud, geen internet vereist.
+        </div>
+      </div>
+
+      <h2>Vertel ons iets over jezelf</h2>
+
+      <label class="form-label">
+        Jouw naam
+        <input
+          type="text"
+          id="ob-naam"
+          class="form-input"
+          placeholder="bijv. Emma"
+          autocomplete="given-name"
+        >
+      </label>
+
+      <label class="form-label">
+        Hoeveel personen kook je voor?
+        <select id="ob-personen" class="form-select">
+          <option value="1">1 persoon</option>
+          <option value="2" selected>2 personen</option>
+          <option value="3">3 personen</option>
+          <option value="4">4 personen</option>
+          <option value="5">5 personen</option>
+          <option value="6">6 personen</option>
+          <option value="7">7 personen</option>
+          <option value="8">8+ personen</option>
+        </select>
+      </label>
+
+      <label class="form-label">
+        Dieetwensen (optioneel)
+        <div class="checkbox-groep">
+          <label class="checkbox-label">
+            <input type="checkbox" class="ob-dieet" value="vegetarisch">
+            🥦 Vegetarisch
+          </label>
+          <label class="checkbox-label">
+            <input type="checkbox" class="ob-dieet" value="vegan">
+            🌱 Vegan
+          </label>
+          <label class="checkbox-label">
+            <input type="checkbox" class="ob-dieet" value="glutenvrij">
+            🌾 Glutenvrij
+          </label>
+          <label class="checkbox-label">
+            <input type="checkbox" class="ob-dieet" value="lactosevrij">
+            🥛 Lactosevrij
+          </label>
+          <label class="checkbox-label">
+            <input type="checkbox" class="ob-dieet" value="halal">
+            ☪️ Halal
+          </label>
+        </div>
+      </label>
+
+      <label class="form-label">
+        Favoriete supermarkt
+        <select id="ob-supermarkt" class="form-select">
+          <option value="geen voorkeur">Geen voorkeur</option>
+          <option value="Albert Heijn">Albert Heijn</option>
+          <option value="Jumbo">Jumbo</option>
+          <option value="Lidl">Lidl</option>
+          <option value="Aldi">Aldi</option>
+          <option value="Plus">Plus</option>
+          <option value="Dirk">Dirk</option>
+        </select>
+      </label>
+
+      <button id="ob-start-knop" class="knop knop-primair knop-vol">
+        🚀 Begin met BoodschappenBuddy
+      </button>
+    </div>
+  </div>
+
+
+  <!-- =====================================================
+       HOOFD APP
+       ===================================================== -->
+  <div id="app" style="display: none;">
+
+    <!-- Header -->
+    <header class="app-header">
+      <span class="app-logo">🛒</span>
+      <span class="app-titel">BoodschappenBuddy</span>
+    </header>
+
+    <!-- Inhoud -->
+    <main class="app-inhoud">
+
+      <!-- Pagina: Recepten Ontdekken (Swipe) -->
+      <section id="pagina-swipe" class="pagina pagina-swipe" role="main" aria-label="Recepten ontdekken">
+        <div id="swipe-kaart-container">
+          <!-- Dynamisch geladen via app.js -->
+        </div>
+      </section>
+
+      <!-- Pagina: Weekmenu -->
+      <section id="pagina-menu" class="pagina" role="main" aria-label="Weekmenu">
+        <div id="menu-container">
+          <!-- Dynamisch geladen via app.js -->
+        </div>
+      </section>
+
+      <!-- Pagina: Boodschappenlijst -->
+      <section id="pagina-lijst" class="pagina" role="main" aria-label="Boodschappenlijst">
+        <div id="lijst-container">
+          <!-- Dynamisch geladen via app.js -->
+        </div>
+      </section>
+
+      <!-- Pagina: Instellingen -->
+      <section id="pagina-instellingen" class="pagina" role="main" aria-label="Instellingen">
+        <div id="instellingen-container">
+          <!-- Dynamisch geladen via app.js -->
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Bottom Navigatie -->
+    <nav class="bottom-nav" role="navigation" aria-label="Hoofdnavigatie">
+      <button class="nav-knop actief" data-pagina="swipe" aria-label="Recepten ontdekken">
+        <span class="nav-icon">🍽</span>
+        <span>Ontdek</span>
+        <span class="nav-badge" id="swipe-badge" aria-hidden="true"></span>
+      </button>
+      <button class="nav-knop" data-pagina="menu" aria-label="Weekmenu bekijken">
+        <span class="nav-icon">📅</span>
+        <span>Menu</span>
+      </button>
+      <button class="nav-knop" data-pagina="lijst" aria-label="Boodschappenlijst">
+        <span class="nav-icon">🛒</span>
+        <span>Lijst</span>
+      </button>
+      <button class="nav-knop" data-pagina="instellingen" aria-label="Instellingen">
+        <span class="nav-icon">⚙️</span>
+        <span>Instellingen</span>
+      </button>
+    </nav>
+
+  </div>
+
+  <!-- Scripts — volledig lokaal, geen externe afhankelijkheden -->
+  <script src="./js/data.js"></script>
+  <script src="./js/storage.js"></script>
+  <script src="./js/app.js"></script>
+</body>
+</html>
